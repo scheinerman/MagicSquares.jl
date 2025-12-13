@@ -3,7 +3,7 @@ module MagicSquares
 using JuMP
 using ChooseOptimizer
 
-export magic
+export magic, magic_check
 
 """
     magic(n::Int)
@@ -11,7 +11,7 @@ export magic
 Create a magic square of order `n` using integer linear programming. Throws an error
 if no such magic square exists. 
 """
-function magic(n::Int)
+function magic(n::Int)::Matrix{Int}
     @assert n>0 "Magic square size must be positive."
 
     MOD = Model(get_solver())
@@ -45,14 +45,10 @@ function magic(n::Int)
     @constraint(MOD, sum(k*x[i, i, k] for i in 1:n for k in 1:(n ^ 2))==m)
     @constraint(MOD, sum(k*x[i, n + 1 - i, k] for i in 1:n for k in 1:(n ^ 2))==m)
 
-    @show n, m
-
     optimize!(MOD)
     t = Int(termination_status(MOD))
 
-    @show t 
-
-    if Int(t) ≠ 1 
+    if Int(t) ≠ 1
         error("No magic square of order $n exists")
     end
 
@@ -69,8 +65,51 @@ function magic(n::Int)
         end
     end
 
-
     return M
 end
+
+"""
+    magic_check(M::Matrix{Int})::Bool
+
+Check if `M` is a magic square.
+"""
+function magic_check(M::AbstractMatrix{Int})::Bool
+    n, c = size(M)
+    if n≠c
+        return false
+    end
+
+    m = n*(n^2+1)÷2
+
+    s = sum(M; dims=1)
+
+    if !(_vec_value_check(s, m))
+        return false
+    end
+
+    s = sum(M; dims=2)
+    if !(_vec_value_check(s, m))
+        return false
+    end
+
+    s = sum(M[i, i] for i in 1:n)  # diagonal sum 
+    if s ≠ m
+        return false
+    end
+
+    s = sum(M[i, n + 1 - i] for i in 1:n)  # antidiagonal sum 
+    if s ≠ m
+        return false
+    end
+
+    return true
+end
+
+"""
+    _vec_value_check(vec, val)::Bool
+
+Check that all elements of `vec` are equal to `val`.
+"""
+_vec_value_check(vec, val)::Bool = all(vec .== val)
 
 end # module MagicSquares
