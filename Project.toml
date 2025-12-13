@@ -1,6 +1,6 @@
 name = "MagicSquares"
 uuid = "733919f0-fbf6-471e-a3b8-7cae3dee0e2c"
-version = "0.1.0"
+version = "0.0.1"
 authors = ["Ed Scheinerman <ers@jhu.edu>"]
 
 [deps]
@@ -8,5 +8,5 @@ ChooseOptimizer = "858a232f-1959-5553-8cfc-91e1fd5304e2"
 JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
 
 [compat]
-ChooseOptimizer = "0.3.2"
-JuMP = "1.29.3"
+ChooseOptimizer = "0.3"
+JuMP = "1"
