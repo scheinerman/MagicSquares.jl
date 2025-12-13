@@ -7,7 +7,7 @@ Demonstration project using integer linear programming to create magic squares.
 
 Use `magic(n)` to create a magic square of order `n`. This is an `n`-by-`n` matrix whose entries are the numbers `1` through `n^2` such that the sum of the entries in every row, every column, and the two diagonals is the same. 
 
-This is done via integer linear programming. Consquently, it is horribly slow.
+This is done via integer linear programming. Consquently, it is slow.
 ```
 julia> @time magic(6)
 111.030697 seconds (220.59 k allocations: 16.619 MiB, 0.01% gc time)
@@ -19,7 +19,26 @@ julia> @time magic(6)
   1  30  11  17  18  34
  19  26  31   8   5  22
 ```
-By default, the HiGHS solver is used to solve the ILP. 
+
+### Changing solver
+
+By default, the HiGHS solver is used to solve the ILP. Gurobi is much faster.
+```
+julia> using ChooseOptimizer, Gurobi
+
+julia> set_solver(Gurobi)
+
+julia> @time magic(6)
+  2.087627 seconds (51.31 k allocations: 3.246 MiB)
+6×6 Matrix{Int64}:
+ 14  19  24   1  33  20
+ 18  31  15  27   8  12
+  5  35   4  34  26   7
+ 28   6  22  10  13  32
+ 30  11  21   3  29  17
+ 16   9  25  36   2  23
+```
+
 
 ### Formulation
 
