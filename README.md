@@ -66,3 +66,32 @@ julia> @time odd_magic_square(7)
  21  23  32  41  43   3  12
  22  31  40  49   2  11  20
 ```
+
+
+## Check function
+
+The function `magic_check` checks if a matrix is a properly formed magic square. 
+
+```
+julia> M = magic(5)
+5×5 Matrix{Int64}:
+  6  13  22   7  17
+ 12  24  18   8   3
+ 19  10   1  14  21
+  5  16   4  25  15
+ 23   2  20  11   9
+
+julia> magic_check(M)
+true
+
+julia> M = ones(Int,5,5)
+5×5 Matrix{Int64}:
+ 1  1  1  1  1
+ 1  1  1  1  1
+ 1  1  1  1  1
+ 1  1  1  1  1
+ 1  1  1  1  1
+
+julia> magic_check(M)
+false
+```

@@ -8,3 +8,6 @@ M = odd_magic_square(5)
 
 M = odd_magic_square(11)
 @test magic_check(M)
+
+M = ones(Int,5,5)
+@test !magic_check(M)
