@@ -3,10 +3,12 @@ module MagicSquares
 using JuMP
 using ChooseOptimizer
 
-export magic, magic_check, odd_magic_square
+export double_even_magic_square, magic, magic_fast, magic_check, odd_magic_square
 
 include("magic_check.jl")
 include("ilp_square.jl")
 include("odd_square.jl")
+include("double_even.jl")
+include("magic_fast.jl")
 
 end # module MagicSquares
