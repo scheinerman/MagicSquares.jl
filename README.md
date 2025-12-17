@@ -9,6 +9,8 @@ Use `magic(n)` to create a magic square of order `n`. This is an `n`-by-`n` matr
 
 This is done via integer linear programming. Consquently, it is slow.
 ```
+julia> using MagicSquares
+
 julia> @time magic(6)
 111.030697 seconds (220.59 k allocations: 16.619 MiB, 0.01% gc time)
 6×6 Matrix{Int64}:

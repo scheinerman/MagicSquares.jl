@@ -1,6 +1,11 @@
+"""
+    magic_fast(n::Int)
+
+Construct a magic square of order `n` using standard methods. Throws an error
+if no such magic square exists. 
+"""
 function magic_fast(n::Int)
     @assert n>0 "$n must be positive"
-    #@assert mod(n, 4)≠2 "Unimplemented: Cannot construct magic square of order $n (yet)"
 
     if mod(n, 2) == 1
         return odd_magic_square(n)

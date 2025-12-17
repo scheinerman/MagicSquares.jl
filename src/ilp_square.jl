@@ -2,10 +2,10 @@
 """
     magic(n::Int)
 
-Create a magic square of order `n` using integer linear programming. Throws an error
+Construct a magic square of order `n` using integer linear programming. Throws an error
 if no such magic square exists. 
 
-#d# Note
+## Note
 This can be very slow.
 """
 function magic(n::Int)::Matrix{Int}
