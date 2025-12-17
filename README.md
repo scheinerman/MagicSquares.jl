@@ -1,6 +1,6 @@
 # MagicSquares
 
-Demonstration project using integer linear programming to create magic squares.
+Demonstration project using integer linear programming to create magic squares. We also include standard, speedy methods for the sake of completeness.
 
 
 ## Creating magic squares using integer linear programming [ILP]

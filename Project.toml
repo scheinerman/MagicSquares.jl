@@ -1,6 +1,6 @@
 name = "MagicSquares"
 uuid = "733919f0-fbf6-471e-a3b8-7cae3dee0e2c"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Ed Scheinerman <ers@jhu.edu>"]
 
 [deps]
