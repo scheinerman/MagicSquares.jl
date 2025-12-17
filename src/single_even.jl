@@ -3,7 +3,6 @@ export single_even_magic
 function single_even_magic(n::Int)
     @assert mod(n, 4)==2 "mod($n,4) ≠ 2"
     @assert n>2 "No magic square of size $n"
-    LUX = make_LUX(n)
 
     M = zeros(Int, n, n)
 
@@ -11,6 +10,7 @@ function single_even_magic(n::Int)
     pattern_U = [1 4; 2 3]
     pattern_X = [1 4; 3 2]
 
+    LUX = make_LUX(n)
     return LUX
 end
 
