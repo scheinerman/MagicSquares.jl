@@ -53,30 +53,34 @@ To find a magic square of order $n$, we use the following ILP:
 
 ## Fast generation of magic squares
 
-The function `magic_fast(n)` creates a magic square of order `n` using standard techniques. Currenly this is implemented for `n` odd or `n` divisible by `4`. Will do the `mod(n,4)==1` case later. 
+The function `magic_fast(n)` creates a magic square of order `n` using standard techniques. 
 
 ```
-julia> M = magic_fast(5)
+julia> for k=3:6
+       display(magic_fast(k))
+       end
+3×3 Matrix{Int64}:
+ 8  1  6
+ 3  5  7
+ 4  9  2
+4×4 Matrix{Int64}:
+  1  12   8  13
+ 15   6  10   3
+ 14   7  11   2
+  4   9   5  16
 5×5 Matrix{Int64}:
  17  24   1   8  15
  23   5   7  14  16
   4   6  13  20  22
  10  12  19  21   3
  11  18  25   2   9
-
-julia> M = magic_fast(8)
-8×8 Matrix{Int64}:
-  1  56  48  25  33  24  16  57
- 63  10  18  39  31  42  50   7
- 62  11  19  38  30  43  51   6
-  4  53  45  28  36  21  13  60
-  5  52  44  29  37  20  12  61
- 59  14  22  35  27  46  54   3
- 58  15  23  34  26  47  55   2
-  8  49  41  32  40  17   9  64
-
-julia> M = magic_fast(10)
-ERROR: AssertionError: Unimplemented: Cannot construct magic square of order 10 (yet)
+6×6 Matrix{Int64}:
+ 32  29   4   1  24  21
+ 30  31   2   3  22  23
+ 12   9  17  20  28  25
+ 10  11  18  19  26  27
+ 13  16  36  33   5   8
+ 14  15  34  35   6   7
 ```
 
 

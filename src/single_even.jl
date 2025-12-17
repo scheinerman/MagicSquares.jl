@@ -1,17 +1,31 @@
-export single_even_magic
+"""
+    single_even_magic(n::Int)
 
+Create an `n`-by-`n` magic square for `mod(n,4) = 2` by the LUX method.
+"""
 function single_even_magic(n::Int)
     @assert mod(n, 4)==2 "mod($n,4) ≠ 2"
-    @assert n>2 "No magic square of size $n"
+    @assert n>2 "There is no magic square of size $n"
 
     M = zeros(Int, n, n)
 
     pattern_L = [4 1; 2 3]
     pattern_U = [1 4; 2 3]
     pattern_X = [1 4; 3 2]
+    pats = [pattern_L, pattern_U, pattern_X]
 
     LUX = make_LUX(n)
-    return LUX
+
+    template = odd_magic_square(n÷2)
+
+    for i in 1:(n ÷ 2)
+        for j in 1:(n ÷ 2)
+            x = template[i, j]
+            T = pats[LUX[i, j]]
+            M[(2i - 1):2i, (2j - 1):2j] = 4(x-1) .+ T
+        end
+    end
+    return M
 end
 
 function make_LUX(n::Int)
