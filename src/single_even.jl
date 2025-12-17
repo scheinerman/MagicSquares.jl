@@ -4,6 +4,14 @@ function single_even_magic(n::Int)
     @assert mod(n, 4)==2 "mod($n,4) ≠ 2"
     @assert n>2 "No magic square of size $n"
     LUX = make_LUX(n)
+
+    M = zeros(Int, n, n)
+
+    pattern_L = [4 1; 2 3]
+    pattern_U = [1 4; 2 3]
+    pattern_X = [1 4; 3 2]
+
+    return LUX
 end
 
 function make_LUX(n::Int)
@@ -37,15 +45,15 @@ end
 """
     M6()
 
-This is wrong :-(
+Create a 6x6 magic square by LUX method.
 """
 function M6()
     M = [
         32 29 4 1 24 21
         30 31 2 3 22 23
-        12 9 17 19 28 25
-        10 11 18 20 26 27
-        13 15 36 33 5 8
-        14 16 34 35 6 7
+        12 9 17 20 28 25
+        10 11 18 19 26 27
+        13 16 36 33 5 8
+        14 15 34 35 6 7
     ]
 end
